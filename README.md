@@ -1,5 +1,6 @@
 Ansible Role: PHP
 =========
+[![Build Status](https://travis-ci.org/1nfinitum/ansible-php.svg?branch=master)](https://travis-ci.org/1nfinitum/ansible-php)
 
 Installs PHP and accomplishes its configurations on Ubuntu Xenial.
 
