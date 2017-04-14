@@ -1,0 +1,43 @@
+---
+- name: Defining extra php_packages.
+  set_fact:
+    php_packages: "{{ php_packages + php_packages_extra}}"
+  when: php_packages_extra is defined
+
+- name: Installing PHP packages.
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+    cache_valid_time: 86400
+    state: present
+  with_items: "{{ php_packages }}"
+  register: php_package_install
+
+- name: Deleting OpCache configuration if this role will provide one.
+  file:
+    path: "{{ item }}/{{ php_opcache_conf_filename }}"
+    state: absent
+  with_items: "{{ php_extension_conf_paths }}"
+  when: php_opcache_enable and php_package_install.changed
+
+- name: Ensure configuration directories exist.
+  file:
+    path: "{{ item }}"
+    state: directory
+    follow: true
+  with_items: "{{ php_conf_paths + php_extension_conf_paths }}"
+
+- name: Place PHP configuration file in place.
+  template:
+    src: php.ini.j2
+    dest: "{{ item }}/php.ini"
+    owner: root
+    group: root
+    mode: 0644
+  with_items: "{{ php_conf_paths }}"
+  notify: restart webserver
+  when: php_use_managed_ini
+
+# Configuring OpCache and PHP-FPM
+- include: configure-opcache.yml
+- include: configure-fpm.yml
