@@ -21,11 +21,11 @@ A list of extra PHP packages to install without overriding the default list.
 
 If your usage of PHP is tied to a web server (e.g. Apache or Nginx), leave this default value. If you are using PHP server-side or to run some small application, set this value to `false` so this role doesn't attempt to interact with a web server.
 
-    php_webserver_daemon: "httpd"
+    php_webserver_daemon: "nginx"
 
 The default values for the HTTP server daemon is `apache2` (used by Apache) for Debian/Ubuntu. If you are running another webserver (for example, `nginx`), change this value to the name of the daemon under which the webserver runs.
 
-### PHP-FPM
+### PHP-FPM settings
 
 PHP-FPM is a simple and robust FastCGI Process Manager for PHP. It can dramatically ease scaling of PHP apps and is the normal way of running PHP-based sites and apps when using a webserver like Nginx (though it can be used with other webservers just as easily).
 
@@ -78,7 +78,7 @@ By default, all the extra defaults below are applied through the php.ini include
 
 Various defaults for PHP. Only used if `php_use_managed_ini` is set to `true`.
 
-### OpCache-related Variables
+### OpCache-related settings
 
     php_opcache_zend_extension: "opcache.so"
     php_opcache_enable: "1"
