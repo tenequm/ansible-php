@@ -13,13 +13,7 @@
     install_recommends: yes
   with_items: "{{ php_packages }}"
   register: php_package_install
-
-- name: Deleting OpCache configuration if this role will provide one.
-  file:
-    path: "{{ item }}/{{ php_opcache_conf_filename }}"
-    state: absent
-  with_items: "{{ php_extension_conf_paths }}"
-  when: php_opcache_enable and php_package_install.changed
+  notify: delete opcache configuration
 
 - name: Ensure configuration directories exist.
   file:

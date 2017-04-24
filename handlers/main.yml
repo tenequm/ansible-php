@@ -5,9 +5,19 @@
     state: restarted
   notify: restart php-fpm
   when: php_enable_webserver
+  changed_when: false
 
 - name: restart php-fpm
   service:
     name: "{{ php_fpm_daemon }}"
     state: restarted
   when: php_enable_fpm
+  changed_when: false
+
+- name: delete opcache configuration
+  file:
+    path: "{{ item }}/{{ php_opcache_conf_filename }}"
+    state: absent
+  with_items: "{{ php_extension_conf_paths }}"
+  when: php_opcache_enable
+  changed_when: false
