@@ -8,7 +8,6 @@
   apt:
     name: "{{ item }}"
     update_cache: yes
-    cache_valid_time: 86400
     state: present
     install_recommends: yes
   with_items: "{{ php_packages }}"
