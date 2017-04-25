@@ -5,7 +5,7 @@
   when: php_packages_extra is defined
 
 - name: Updating APT cache.
-  apt: update_cache=yes cache_valid_time=86400
+  apt: update_cache=yes cache_valid_time=3600
 
 - name: Installing PHP packages.
   apt:
