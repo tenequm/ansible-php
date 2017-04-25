@@ -48,7 +48,7 @@ Specific settings inside the default `www.conf` PHP-FPM pool. If you'd like to m
 
     php_use_managed_ini: true
 
-By default, all the extra defaults below are applied through the php.ini included with this role. You can self-manage your php.ini file (if you need more flexility in its configuration) by setting this to `false` (in which case all the below variables will be ignored).
+By default, all the extra defaults below are applied through the php.ini included with this role. You can self-manage your php.ini file (if you need more flexility in its configuration) by setting this to `false` (in this case all the below variables will be ignored).
 
     php_memory_limit: "256M"
     php_max_execution_time: "60"
