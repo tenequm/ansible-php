@@ -4,12 +4,13 @@
     php_packages: "{{ php_packages + php_packages_extra}}"
   when: php_packages_extra is defined
 
+- name: Updating APT cache.
+  apt: update_cache=yes
+
 - name: Installing PHP packages.
   apt:
     name: "{{ item }}"
-    update_cache: yes
     state: present
-    cache_valid_time: 86400
     install_recommends: yes
   with_items: "{{ php_packages }}"
   register: php_package_install
