@@ -27,6 +27,7 @@
   with_items: "{{ php_extension_conf_paths }}"
   when: php_opcache_enable
   notify: restart webserver
+  changed_when: false
 
 - name: Remove OpCache config file if OpCache is disabled.
   file:
