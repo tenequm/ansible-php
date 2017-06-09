@@ -1,6 +1,6 @@
 Ansible Role: PHP
 =========
-[![Build Status](https://travis-ci.org/1nfinitum/ansible-php.svg?branch=master)](https://travis-ci.org/1nfinitum/ansible-php)
+[![Build Status](https://travis-ci.org/tenequm/ansible-php.svg?branch=master)](https://travis-ci.org/tenequm/ansible-php)
 
 Installs PHP and accomplishes its configurations on Ubuntu Xenial.
 
@@ -103,7 +103,7 @@ Example Playbook
       vars_files:
         - vars/main.yml
       roles:
-         - 1nfinitum.php
+         - tenequm.php
 
 *Inside `vars/main.yml`*:
 
@@ -130,4 +130,4 @@ MIT
 Author Information
 ------------------
 
-This role was created in 2017 by [Mykhaylo Kolesnik](http://github.com/1nfinitum).
+This role was created in 2017 by [Mykhaylo Kolesnik](http://github.com/tenequm).
